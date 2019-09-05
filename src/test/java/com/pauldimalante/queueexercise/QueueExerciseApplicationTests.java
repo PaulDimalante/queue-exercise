@@ -26,13 +26,25 @@ public class QueueExerciseApplicationTests {
 	}
 
 	@Test
-	public void QueueWithOneItemShouldReturnItem() {
+	public void QueueWithOneItemShouldReturnSameItem() {
 		Object expected = new Object();
 		MyQueue myQueue = new MyQueue();
 		myQueue.Enqueue(expected);
 		assertEquals(myQueue.Front(), expected);
 		assertEquals(myQueue.Rear(), expected);
 		assertEquals(myQueue.Dequeue(), expected);
+	}
+
+	@Test
+	public void QueueWithMoreThanOneItemShouldReturnDifferentItem() {
+		Object expectedFirst = new Object();
+		Object expectedLast = new Object();
+		MyQueue myQueue = new MyQueue();
+		myQueue.Enqueue(expectedFirst);
+		myQueue.Enqueue(expectedLast);
+		assertEquals(myQueue.Front(), expectedFirst);
+		assertEquals(myQueue.Rear(), expectedLast);
+		assertEquals(myQueue.Dequeue(), expectedFirst);
 	}
 
 }

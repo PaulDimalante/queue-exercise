@@ -2,33 +2,34 @@ package com.pauldimalante.queueexercise;
 
 public class MyQueue {
     private Object myQueue[] = new Object[100];
-    private int count = -1;
+    private int rearPos = -1;
+    private int frontPos = 0;
 
     void Enqueue(Object object) {
-        this.count++;
-        this.myQueue[this.count] = object;
+        this.rearPos++;
+        this.myQueue[this.rearPos] = object;
     }
 
     Object Dequeue () {
-        if(this.count<0) return null;
+        if(this.rearPos<0) return null;
         Object object = null;
-        object = this.myQueue[this.count];
-        this.myQueue[this.count] = null;
-        this.count--;
+        object = this.myQueue[this.frontPos];
+        this.myQueue[this.frontPos] = null;
+        this.frontPos++;
         return object;
     }
 
     Object Front() {
         Object object = null;
-        if(this.count<0) return null;
-        object = this.myQueue[this.count];
+        if(this.rearPos<0) return null;
+        object = this.myQueue[this.frontPos];
         return object;
     }
 
     Object Rear() {
         Object object = null;
-        if(this.count<0) return null;
-        object = this.myQueue[0];
+        if(this.rearPos<0) return null;
+        object = this.myQueue[this.rearPos];
         return object;
     }
 }
