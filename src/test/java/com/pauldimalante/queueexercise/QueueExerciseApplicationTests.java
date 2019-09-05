@@ -25,4 +25,14 @@ public class QueueExerciseApplicationTests {
 		assertNull(myQueue.Dequeue());
 	}
 
+	@Test
+	public void QueueWithOneItemShouldReturnItem() {
+		Object expected = new Object();
+		MyQueue myQueue = new MyQueue();
+		myQueue.Enqueue(expected);
+		assertEquals(myQueue.Front(), expected);
+		assertEquals(myQueue.Rear(), expected);
+		assertEquals(myQueue.Dequeue(), expected);
+	}
+
 }
