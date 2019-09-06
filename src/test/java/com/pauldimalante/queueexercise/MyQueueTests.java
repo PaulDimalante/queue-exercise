@@ -1,8 +1,7 @@
 package com.pauldimalante.queueexercise;
 
-//import org.junit.After;
-//import org.junit.Before;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
@@ -12,18 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class MyQueueTests {
-	public static void main() {
-		MyQueueTests me = new MyQueueTests();
-		me.emptyNodeQueueShouldReturnException();
-		//me.nodeQueueWithOneItemShouldReturnSameItem();
-		//me.nodeQueueWithMoreThanOneItemShouldReturnDifferentItem();
-	}
+	@BeforeEach
+	public void beforeRoutine() {};
 
-//	@Before
-//	public void beforeRoutine() {};
-//
-//	@After
-//	public void afterRoutine() {};
+	@AfterEach
+	public void afterRoutine() {};
 
 	@Test
 	public void emptyNodeQueueShouldReturnException() {

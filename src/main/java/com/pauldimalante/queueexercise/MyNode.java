@@ -1,7 +1,5 @@
 package com.pauldimalante.queueexercise;
 
-import com.google.gson.Gson;
-
 public class MyNode {
     private Object data;
     private MyNode nextNode;
@@ -9,8 +7,6 @@ public class MyNode {
     MyNode() {}
 
     MyNode(Object data) {
-//        Gson gson = new Gson();
-//        this.data = gson.fromJson(gson.toJson(data), Object.class);
         this.data = data;
     }
 
