@@ -3,35 +3,53 @@ package com.pauldimalante.queueexercise;
 import java.util.NoSuchElementException;
 
 public class MyQueue {
-    private Object myQueue[] = new Object[100];
-    private int rearPos = -1;
-    private int frontPos = 0;
+    private MyNode myNode = new MyNode();
+    private MyNode head = new MyNode();
 
     void enqueue(Object object) {
-        this.rearPos++;
-        this.myQueue[this.rearPos] = object;
+        MyNode newNode = new MyNode(object);
+
+        if(this.myNode.getData()==null) {
+            this.myNode.setData(object);
+        } else {
+            this.myNode.setNextNode(newNode);
+        }
+
+        if(this.head.getData()==null) {
+            this.head = newNode;
+        } else if(this.head.getNextNode()==null) {
+            this.head.setNextNode(newNode);
+        }
+
+        this.myNode = newNode;
     }
 
-    Object dequeue () throws NoSuchElementException {
-        if(this.rearPos<0) throw new NoSuchElementException("queue is empty");
-        Object object = null;
-        object = this.myQueue[this.frontPos];
-        this.myQueue[this.frontPos] = null;
-        this.frontPos++;
-        return object;
+    Object dequeue() throws NoSuchElementException {
+        try {
+            Object object = this.front();
+            this.head = this.head.getNextNode();
+            return object;
+        } catch (NoSuchElementException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new NoSuchElementException(e.getMessage());
+        }
     }
 
     Object front() throws NoSuchElementException {
-        Object object = null;
-        if(this.rearPos<0) throw new NoSuchElementException("queue is empty");;
-        object = this.myQueue[this.frontPos];
+        Object object = this.head.getData();
+        if(object==null) {
+            throw new NoSuchElementException("queue is empty");
+        }
         return object;
     }
 
     Object rear() throws NoSuchElementException {
-        Object object = null;
-        if(this.rearPos<0) throw new NoSuchElementException("queue is empty");;
-        object = this.myQueue[this.rearPos];
+        Object object = this.myNode.getData();
+        if (object==null) {
+            throw new NoSuchElementException("queue is empty");
+        }
         return object;
     }
 }
+
